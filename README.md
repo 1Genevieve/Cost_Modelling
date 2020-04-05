@@ -1,17 +1,8 @@
 # Cost_modelling
-# Session 1 HAR6178
 # Fitting regression models to costs in R
 
-#Set working directory
-setwd("C:/Users/admin/Desktop/Courses 2016-2019/03_HEDM/Further Stats/02_Cost Modelling/2018")
-read.csv("AccupunctureExample.csv")
-
-#Import dataset
-read.csv("AccupunctureExample.csv")
-AccupunctureExample <- read.csv("AccupunctureExample.csv")
-
-#View data
-View(AccupunctureExample) 
+## Cost data are typically skewed.
+![skewed cost data](C:\Users\admin\Deskto\cost.png)
 
 #Inspect data
 table(AccupunctureExample$treatment)
