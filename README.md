@@ -7,19 +7,8 @@ As such, when modelling cost data (for instance, we want to predict the effect o
 
 ## Fitting a standard linear regression
 
-When we fit a linear regression model to the cost data shown above,
+When we fit a linear regression model to the cost data shown above, we get this result:
 
-model.lr <- lm(AccupunctureExample$Costs24~AccupunctureExample$age+AccupunctureExample$treatment.new+AccupunctureExample$sex.new + AccupunctureExample$SF6DM0)
-model.lr <- lm(AccupunctureExample$Costs24~AccupunctureExample$age+AccupunctureExample$sex.new + AccupunctureExample$SF6DM0)
-summary(model.lr)
-pred.lr <- predict(model.lr)
-mean(pred.lr)
-median(pred.lr)
-sd(pred.lr)
-range(pred.lr)
-AIC(model.lr)
-
-we get this result:
 ![linear model](https://github.com/1Genevieve/Cost_modelling/blob/master/LM.JPG)
 
 
