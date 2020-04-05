@@ -1,30 +1,13 @@
-## Cost_modelling
-## Fitting regression models to costs in R
+# Fitting regression models to costs in R
 
 A typical issue with cost data is they are usually positively skewed and non-negative (if health care services are free!). 
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
-As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. When data are normally distributed, we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x.
+As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. When data are normally distributed (bell-shaped), we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x. Because data is not normally distributed as shown in the figure above, the beta estimator of the linear model misrepresents the relationship between x and y.
 
-# Create factors for categorical variables
-as.factor(AccupunctureExample$sex)
-AccupunctureExample$sex.new<-as.factor(AccupunctureExample$sex)
-AccupunctureExample$treatment.new<-as.factor(AccupunctureExample$treatment)
+## Fitting a standard linear regression
 
-hist(AccupunctureExample$Costs24, col = "blue", breaks = 15, xlab=("costs (GBP)"), main="Accupuncture Example")
-table(AccupunctureExample$treatment)
-mean(AccupunctureExample$Costs24)
-median(AccupunctureExample$Costs24)
-sd(AccupunctureExample$Costs24)
-range(AccupunctureExample$Costs24)
-
-AccupunctureExample$zerocost <- ifelse(AccupunctureExample$Costs24 == 0, 0, 1)
-table(AccupunctureExample$zerocost)
-
-####################################
-# Fit a standard linear regression #
-####################################
-
+When we fit a linear regression model to the cost data shown above,
 
 model.lr <- lm(AccupunctureExample$Costs24~AccupunctureExample$age+AccupunctureExample$treatment.new+AccupunctureExample$sex.new + AccupunctureExample$SF6DM0)
 model.lr <- lm(AccupunctureExample$Costs24~AccupunctureExample$age+AccupunctureExample$sex.new + AccupunctureExample$SF6DM0)
@@ -35,6 +18,10 @@ median(pred.lr)
 sd(pred.lr)
 range(pred.lr)
 AIC(model.lr)
+
+we get this result:
+
+
 
 # Plot the prediction, and compare to the observed costs
 par(mfrow=c(1,2))
