@@ -11,6 +11,7 @@ When we fit a linear regression model to the cost data shown above, we get a res
 
 ![linear model](https://github.com/1Genevieve/Cost_modelling/blob/master/LM.JPG)
 
+The intercept is average change in cost that is an increase of £406.534 after controlling for age, sex and level of health as measured by SF6D. For every unit increase in age, the cost goes up by £5.035. For every unit increase in health (SF6DM0), the cost decreases by £551.301.
 
 # Plot the prediction, and compare to the observed costs
 par(mfrow=c(1,2))
