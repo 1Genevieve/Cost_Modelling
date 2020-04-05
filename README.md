@@ -20,7 +20,7 @@ range(pred.lr)
 AIC(model.lr)
 
 we get this result:
-
+![linear model](https://github.com/1Genevieve/Cost_modelling/blob/master/LM.JPG)
 
 
 # Plot the prediction, and compare to the observed costs
