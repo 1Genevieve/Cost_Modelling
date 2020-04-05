@@ -3,20 +3,21 @@
 A typical issue with cost data is they are usually positively skewed and non-negative (if health care services are free!). 
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
-As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. When data are normally distributed (bell-shaped), we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x. Because data is not normally distributed as shown in the figure above, the beta estimator of the linear model misrepresents the relationship between x and y.
+As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. When data are normally distributed (bell-shaped), we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x. Because data is not normally distributed as shown in the figure above, the beta estimator of the linear model misrepresents the relationship between x and y. The OLS method for fitting the line and hence, estimating the slope of the line assumes that 
 
 ## Fitting a standard linear regression
 
-When we fit a linear regression model to the cost data shown above, we get a result like this:
+Let's try fitting a a linear regression model to the cost data shown above. We get a result like this in R:
 
 ![linear model](https://github.com/1Genevieve/Cost_modelling/blob/master/LM.JPG)
 
-The intercept is average change in cost that is an increase of £406.534 after controlling for age, sex and level of health as measured by SF6D. For every unit increase in age, the cost goes up by £5.035. For every unit increase in health (SF6DM0), the cost decreases by £551.301.
+The intercept is the average change in cost that is an increase of £406.534 after controlling for age, sex and level of health as measured by SF6D. For every unit increase in age, the cost goes up by £5.035. For every unit increase in health (SF6DM0), the cost decreases by £551.301.
+
 
 # Plot the prediction, and compare to the observed costs
-par(mfrow=c(1,2))
-hist(pred.lr, col = "blue", breaks = 15,xlab=("predicted costs (GBP)"), main="linear regression")
-hist(AccupunctureExample$Costs24, col = "blue", breaks = 15, xlab=("costs (GBP)"), main="observed costs")
+Now, let's plot the predicted cost when using the linear model and compare that to the observed cost.
+
+![compare costs](https://github.com/1Genevieve/Cost_modelling/blob/master/compare.JPG)
 
 # Standard model diagnostic plots
 plot( fitted(model.lr),resid(model.lr), ylab="residual", xlab="fitted value")
