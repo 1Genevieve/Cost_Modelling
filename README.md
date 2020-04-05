@@ -7,7 +7,7 @@ As such, when modelling cost data (for instance, we want to predict the effect o
 
 ## Fitting a standard linear regression
 
-When we fit a linear regression model to the cost data shown above, we get this result:
+When we fit a linear regression model to the cost data shown above, we get a result like this:
 
 ![linear model](https://github.com/1Genevieve/Cost_modelling/blob/master/LM.JPG)
 
