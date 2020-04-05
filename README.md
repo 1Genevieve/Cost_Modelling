@@ -1,9 +1,10 @@
 # Cost_modelling
 # Fitting regression models to costs in R
 
-## Cost data are typically skewed.
+## A typical issue with cost data is they are usually positively skewed and non-negative (if health care services are free!). 
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
+As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we cannot use the linear regression model.
 
 # Create factors for categorical variables
 as.factor(AccupunctureExample$sex)
