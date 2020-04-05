@@ -2,7 +2,7 @@
 # Fitting regression models to costs in R
 
 ## Cost data are typically skewed.
-![skewed cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
+![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
 #Inspect data
 table(AccupunctureExample$treatment)
