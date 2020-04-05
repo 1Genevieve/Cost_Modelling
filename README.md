@@ -4,7 +4,7 @@
 A typical issue with cost data is they are usually positively skewed and non-negative (if health care services are free!). 
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
-As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we cannot use the linear regression model.
+As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean while taking account of the skewness. For example, when data are normally distributed, we can use a linear model which uses the ordinary least squares (OLS) method.
 
 # Create factors for categorical variables
 as.factor(AccupunctureExample$sex)
