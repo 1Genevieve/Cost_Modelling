@@ -4,23 +4,6 @@
 ## Cost data are typically skewed.
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
-#Inspect data
-table(AccupunctureExample$treatment)
-table(AccupunctureExample$sex)
-summary(AccupunctureExample$age)
-hist(AccupunctureExample$age)
-summary(AccupunctureExample$Costs24)
-hist(AccupunctureExample$Costs24)
-summary(AccupunctureExample$SF6DM0)
-hist(AccupunctureExample$SF6DM0)
- 
-#Missing values
-sum(is.na(AccupunctureExample$id))
-sum(is.na(AccupunctureExample$sex))
-sum(is.na(AccupunctureExample$treatment))
-sum(is.na(AccupunctureExample$Costs24))
-sum(is.na(AccupunctureExample$SF6DM0))
-
 
 # Create factors for categorical variables
 as.factor(AccupunctureExample$sex)
