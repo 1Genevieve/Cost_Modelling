@@ -16,10 +16,10 @@ The intercept is the average change in cost that is an increase of £406.534 aft
 ### Standard model diagnostic plots
 Doing the diagnostics helps us to determine whether we need to correct the model and how.
 
-plot( fitted(model.lr),resid(model.lr), ylab="residual", xlab="fitted value")
-abline(h = 0, lty = 2, col = "blue")
-qqnorm(residuals(model.lr))
-plot(model.lr)
+>plot( fitted(model.lr),resid(model.lr), ylab="residual", xlab="fitted value")
+>abline(h = 0, lty = 2, col = "blue")
+>qqnorm(residuals(model.lr))
+>plot(model.lr)
 
 ![residual plots](https://github.com/1Genevieve/Cost_modelling/blob/master/Residual%20plots.jpg)
 
