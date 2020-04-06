@@ -30,62 +30,58 @@ In the Residuals vs. Fitted plot, there is an upward deflection by about 550 (x-
 ### Plot the prediction, and compare to the observed costs
 Now, let's plot the predicted cost when using the linear model and compare that to the observed cost.
 
+>par(mfrow=c(1,2))
+>hist(pred.lr, col = "blue", breaks = 15,xlab=("predicted costs (GBP)"), main="linear regression")
+>hist(AccupunctureExample$Costs24, col = "blue", breaks = 15, xlab=("costs (GBP)"), main="observed costs")
+
 ![compare costs](https://github.com/1Genevieve/Cost_modelling/blob/master/compare.JPG)
 
 
 ## Fitting a Generalised Linear Model (GLM)
+What about if we fit a Generalised Linear Model?
 
-#Why add 1 to each cost value?
-AccupunctureExample$CostPlus1 <- AccupunctureExample$Costs24+1
-View(AccupunctureExample$CostPlus1)
+>model.glm <- glm(CostPlus1~age+sex.new+SF6DM0,data=AccupunctureExample,family=Gamma(link="identity"))
 
-model.glm <- glm(CostPlus1~age+sex.new+SF6DM0,data=AccupunctureExample,family=Gamma(link="identity"))
-summary(model.glm)
-pred.glm <- predict(model.glm)
-mean(pred.glm)
-median(pred.glm)
-sd(pred.glm)
-range(pred.glm)
-AIC(model.glm)
-
-### Plot the prediction, and compare to the observed costs
-par(mfrow=c(1,2))
-hist(pred.glm, col = "blue", breaks = 15,xlab=("predicted costs (GBP)"), main="GLM")
-hist(AccupunctureExample$Costs24, col = "blue", breaks = 15, xlab=("costs (GBP)"), main="observed costs")
+![GLM](https://github.com/1Genevieve/Cost_modelling/blob/master/GLM.JPG)
 
 ### Standard model diagnostic plots
-plot( fitted(model.glm),resid(model.glm), ylab="residual", xlab="fitted value")
-abline(h = 0, lty = 2, col = "blue")
-qqnorm(residuals(model.glm))
+>plot( fitted(model.glm),resid(model.glm), ylab="residual", xlab="fitted value")
+>abline(h = 0, lty = 2, col = "blue")
+>qqnorm(residuals(model.glm))
+
+![GLM diagnostics](https://github.com/1Genevieve/Cost_modelling/blob/master/GLM_diagnostics.jpg)
+
+### Plot the prediction, and compare to the observed costs
+>par(mfrow=c(1,2))
+>hist(pred.glm, col = "blue", breaks = 15,xlab=("predicted costs (GBP)"), main="GLM")
+>hist(AccupunctureExample$Costs24, col = "blue", breaks = 15, xlab=("costs (GBP)"), main="observed costs")
+
+![GLM compare](https://github.com/1Genevieve/Cost_modelling/blob/master/GLM_compare%20plots.jpg)
 
 
-#############################
-# Fitting a two part model  #
-#############################
+## Fitting a two part model
 
-# Part1 Logistic regression
-m.full.glm2p <- glm(zerocost~age+sex.new + SF6DM0,data=AccupunctureExample, family = binomial(link = "logit"))
-summary(m.full.glm2p)
+### Part1 Logistic regression
+>m.full.glm2p <- glm(zerocost~age+sex.new + SF6DM0,data=AccupunctureExample, family = binomial(link = "logit"))
+>summary(m.full.glm2p)
 
-anova(m.full.glm2p, test="Chi")
-glm.pred <- predict(m.full.glm2p, type="response") # Gives the probabilities
-summary(glm.pred)
+>anova(m.full.glm2p, test="Chi")
+>glm.pred <- predict(m.full.glm2p, type="response") # Gives the probabilities
+>summary(glm.pred)
 
-# Part2 Linear regression
-m.costs.lrred <- lm(Costs24~age+sex.new + SF6DM0, data = AccupunctureExample, subset=Costs24 >= 1)
-summary(m.costs.lrred)
-AIC(m.costs.lrred)
-AIC(m.full.glm2p)
+### Part2 Linear regression
+>m.costs.lrred <- lm(Costs24~age+sex.new + SF6DM0, data = AccupunctureExample, subset=Costs24 >= 1)
+>summary(m.costs.lrred)
+>AIC(m.costs.lrred)
+>AIC(m.full.glm2p)
 
-lm.pred <-  predict(m.costs.lrred, AccupunctureExample) # Obtains predictions for the full acupuncture dataset
-tpm.pred <- lm.pred*glm.pred
-summary(lm.pred)
-summary(tpm.pred)
-sd(tpm.pred)
+>lm.pred <-  predict(m.costs.lrred, AccupunctureExample) # Obtains predictions for the full acupuncture dataset
+>tpm.pred <- lm.pred*glm.pred
+>summary(lm.pred)
+>summary(tpm.pred)
+>sd(tpm.pred)
 
-
-# Plot the prediction, and compare to the observed costs
-par(mfrow=c(1,2))
-hist(tpm.pred, col = "blue", breaks = 15,xlab=("predicted costs (GBP)"), main="two-part model")
-hist(AccupunctureExample$Costs24, col = "blue", breaks = 15, xlab=("costs (GBP)"), main="observed costs")
-
+### Plot the prediction, and compare to the observed costs
+>par(mfrow=c(1,2))
+>hist(tpm.pred, col = "blue", breaks = 15,xlab=("predicted costs (GBP)"), main="two-part model")
+>hist(AccupunctureExample$Costs24, col = "blue", breaks = 15, xlab=("costs (GBP)"), main="observed costs")
