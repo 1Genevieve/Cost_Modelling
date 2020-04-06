@@ -21,7 +21,7 @@ abline(h = 0, lty = 2, col = "blue")
 qqnorm(residuals(model.lr))
 plot(model.lr)
 
-! [residual plots](https://github.com/1Genevieve/Cost_modelling/blob/master/Residual%20plots.jpg)
+![residual plots](https://github.com/1Genevieve/Cost_modelling/blob/master/Residual%20plots.jpg)
 
 ### Plot the prediction, and compare to the observed costs
 Now, let's plot the predicted cost when using the linear model and compare that to the observed cost.
