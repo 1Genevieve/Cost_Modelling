@@ -38,11 +38,13 @@ Now, let's plot the predicted cost when using the linear model and compare that 
 
 
 ## Fitting a Generalised Linear Model (GLM)
-What about if we fit a Generalised Linear Model?
+GLM's allow for estimating average effect of skewed cost data.
 
 >model.glm <- glm(CostPlus1~age+sex.new+SF6DM0,data=AccupunctureExample,family=Gamma(link="identity"))
 
 ![GLM](https://github.com/1Genevieve/Cost_modelling/blob/master/GLM.JPG)
+
+Here, the average change in cost is an increase of £479. For every unit increase in age, cost increases by £1.74, and for every increase in health, cost decresease by £439.
 
 ### Standard model diagnostic plots
 >plot( fitted(model.glm),resid(model.glm), ylab="residual", xlab="fitted value")
