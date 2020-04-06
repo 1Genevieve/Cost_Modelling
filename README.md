@@ -23,11 +23,14 @@ Doing the diagnostics helps us to determine whether we need to correct the model
 
 ![residual plots](https://github.com/1Genevieve/Cost_modelling/blob/master/Residual%20plots.jpg)
 
+In the Residuals vs. Fitted plot, there is an upward deflection by about 550 (x-axis) due to the higher values of residuals. In the Q-Q plot, the observed values start to deviate from the fitted line at 1 (x-axis) and farther at 2.
+
+![scale](https://github.com/1Genevieve/Cost_modelling/blob/master/scale.jpg)
+
 ### Plot the prediction, and compare to the observed costs
 Now, let's plot the predicted cost when using the linear model and compare that to the observed cost.
 
 ![compare costs](https://github.com/1Genevieve/Cost_modelling/blob/master/compare.JPG)
-
 
 
 ## Fitting a Generalised Linear Model (GLM)
