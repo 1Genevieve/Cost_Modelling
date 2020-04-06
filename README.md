@@ -1,9 +1,9 @@
 # Fitting regression models to costs in R
 
-A typical issue with cost data is they are usually positively skewed and non-negative (if health care services are free!). 
+A typical issue with cost data is they are usually positively skewed (long positive tail) and non-negative (if health care services are free!). 
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
-As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. When data are normally distributed (bell-shaped), we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x. Because data is not normally distributed as shown in the figure above, the beta estimator of the linear model misrepresents the relationship between x and y. The OLS method for fitting the line and hence, estimating the slope of the line assumes that 
+As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. When data are normally distributed (bell-shaped), we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x (the relationship is linear). Because data is not normally distributed, the beta estimator of the linear model misrepresents the relationship between x and y (beta says relationship is linear when it is actually not). It misrepresents because it uses the OLS method for fitting a line and OLS is assumed to fulfill the Gauss-Markov conditions. However, the skewed data means that the Gauss-Markov conditions are violated, so we cannot use the linear model for getting beta.
 
 ## Fitting a standard linear regression
 
@@ -13,21 +13,24 @@ Let's try fitting a a linear regression model to the cost data shown above. We g
 
 The intercept is the average change in cost that is an increase of £406.534 after controlling for age, sex and level of health as measured by SF6D. For every unit increase in age, the cost goes up by £5.035. For every unit increase in health (SF6DM0), the cost decreases by £551.301.
 
+### Standard model diagnostic plots
+Doing the diagnostics helps us to determine whether we need to correct the model and how.
 
-# Plot the prediction, and compare to the observed costs
-Now, let's plot the predicted cost when using the linear model and compare that to the observed cost.
-
-![compare costs](https://github.com/1Genevieve/Cost_modelling/blob/master/compare.JPG)
-
-# Standard model diagnostic plots
 plot( fitted(model.lr),resid(model.lr), ylab="residual", xlab="fitted value")
 abline(h = 0, lty = 2, col = "blue")
 qqnorm(residuals(model.lr))
 plot(model.lr)
 
-#############
-# Fit a GLM #
-#############
+! [residual plots](https://github.com/1Genevieve/Cost_modelling/blob/master/Residual%20plots.jpg)
+
+### Plot the prediction, and compare to the observed costs
+Now, let's plot the predicted cost when using the linear model and compare that to the observed cost.
+
+![compare costs](https://github.com/1Genevieve/Cost_modelling/blob/master/compare.JPG)
+
+
+
+## Fitting a Generalised Linear Model (GLM)
 
 #Why add 1 to each cost value?
 AccupunctureExample$CostPlus1 <- AccupunctureExample$Costs24+1
@@ -42,12 +45,12 @@ sd(pred.glm)
 range(pred.glm)
 AIC(model.glm)
 
-# Plot the prediction, and compare to the observed costs
+### Plot the prediction, and compare to the observed costs
 par(mfrow=c(1,2))
 hist(pred.glm, col = "blue", breaks = 15,xlab=("predicted costs (GBP)"), main="GLM")
 hist(AccupunctureExample$Costs24, col = "blue", breaks = 15, xlab=("costs (GBP)"), main="observed costs")
 
-# Standard model diagnostic plots
+### Standard model diagnostic plots
 plot( fitted(model.glm),resid(model.glm), ylab="residual", xlab="fitted value")
 abline(h = 0, lty = 2, col = "blue")
 qqnorm(residuals(model.glm))
