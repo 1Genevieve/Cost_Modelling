@@ -86,4 +86,4 @@ Young, T. (2019) Statistical Modelling of Cost Data. (Lecture) The University of
 
 Barber, J. and Thompson, S. (2004) Multiple regression of cost data: use of genearlised linear models. Journal of Health Services Research & Policy, 9 (4), 197-204.
 
-Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/)
+Bommae Kim (2015) Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/)
