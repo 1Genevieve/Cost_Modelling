@@ -1,11 +1,13 @@
 # Fitting regression models to costs in R
 
+This is my interpretation of the R exercises on cost modelling as part of a lecture on Statistical Modelling of Cost Data by Tracey Young of The University of Sheffield. I sought to learn cost analysis and thought of writing up my understanding.
+
 A typical issue with cost data is they are usually positively skewed (long positive tail), non-negative (if health care services are free!) and heteroscedastic. 
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
 As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. When data are normally distributed (bell-shaped), we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x (the relationship is linear). Because data is not normally distributed, the beta estimator of the linear model misrepresents the relationship between x and y (beta says relationship is linear when it is actually not). It misrepresents because it uses the OLS method for fitting a line and OLS is assumed to fulfill the Gauss-Markov conditions. However, the skewed data means that the Gauss-Markov conditions are violated, so we cannot use the linear model for getting beta.
 
-## What are the Gauss-Markov conditions?
+### What are the Gauss-Markov conditions?
 When G-M conditions are upheld, OLS is the best linear unbiased (and efficient) estimator (BLUE).
 1. The population process can be represented by a linear additive relationship between x and y.
 2. The sample is a random sample of the population and all units of the sample come from the same population process.
