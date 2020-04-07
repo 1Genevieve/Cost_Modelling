@@ -41,7 +41,7 @@ The Scale Location plot checks whether errors are homoskedastic, that is, they a
 
 The AIC is calculated using the formula: -2(log likelihood) + 2(number of fitted parameters) or using the R code AIC(model). In this case, it is 2386.301. The smaller the AIC, the better the model. If the difference between two models (i.e. LM and GLM) is 10 or more, then we have stronger evidence supporting our choice of model with the smaller AIC. We'll compare this with the AIC of the GLM.
 
-### Plot the prediction, and compare to the observed costs
+### Predicted vs. observed costs
 Now, let's plot the predicted cost when using the linear model and compare that to the observed cost.
 
 >par(mfrow=c(1,2))
@@ -71,7 +71,7 @@ Let's now do the diagnostics for the GLM and compare with those of the linear re
 
 The AIC is 1955.901. Compare this with the AIC of the linear regression model that is 2386.301. The GLM AIC is smaller and the difference is more than 10, indicating that GLM is the better fitting model.
 
-### Plot the prediction, and compare to the observed costs
+### Predicted vs. observed costs
 Let's now compare the predicted and observed costs.
 
 >par(mfrow=c(1,2))
