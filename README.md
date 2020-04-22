@@ -1,6 +1,6 @@
 # Fitting regression models to costs in R
 
-This is my interpretation of the R exercises on cost modelling as part of a lecture on Statistical Modelling of Cost Data by Tracey Young of The University of Sheffield.
+This is my interpretation of the R exercises on cost modelling as part of a lecture on Statistical Modelling of Cost Data in The University of Sheffield.
 
 A typical issue with cost data is they are usually positively skewed (long positive tail), non-negative (if health care services are free!), multimodal, heteroscedastic and has missing data. 
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
