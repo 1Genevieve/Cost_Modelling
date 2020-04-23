@@ -2,13 +2,17 @@
 
 This is my interpretation of the R exercises on cost modelling as part of a lecture on Statistical Modelling of Cost Data in The University of Sheffield.
 
-A typical issue with cost data is they are usually positively skewed (long positive tail), non-negative (if health care services are free!), multimodal, heteroscedastic and has missing data. 
+A typical issue with cost data is they are usually positively skewed (long positive tail) and non-negative and multimodal. 
 ![cost data](https://github.com/1Genevieve/Cost_modelling/blob/master/cost.png)
 
-As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. When data are normally distributed (bell-shaped), we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x (the relationship is linear). Because data is not normally distributed, the beta estimator of the linear model misrepresents the relationship between x and y (beta says relationship is linear when it is actually not). It misrepresents because it uses the OLS method for fitting a line and OLS is assumed to fulfill the Gauss-Markov conditions. However, the skewed data means that the Gauss-Markov conditions are violated, so we cannot use the linear model for getting beta.
+As such, when modelling cost data (for instance, we want to predict the effect of treatment intervention vs. a comparator on cost), we want to fit a model that will give us the population mean (average effect of treatment on cost) while taking account of the skewness. 
+
+When data are normally distributed (bell-shaped), we can use a linear regression model, which uses the ordinary least squares (OLS) method. In a linear model, the parameter beta tells us the average change in y for every unit change in x (the relationship is linear). Given a large number of samples, that average change will fall in the center of the bell-shaped curve, which represents the population mean. If data is not normally distributed, the beta estimator of the linear model will misrepresent the relationship between x and y. 
+
+Also, as a rule, when using the OLS method for fitting a line, data is assumed to fulfill the Gauss-Markov conditions. However, the skewed data means that G-M conditions are violated. Thus, we cannot use the linear model for getting beta.
 
 ### What are the Gauss-Markov conditions?
-When G-M conditions are upheld, OLS is the best linear unbiased (and efficient) estimator (BLUE).
+When G-M conditions are upheld, OLS is the best linear unbiased (and efficient) estimator (remember BLUE?!).
 1. The population process can be represented by a linear additive relationship between x and y.
 2. The sample is a random sample of the population and all units of the sample come from the same population process.
 3. Zero conditional mean of errors.
@@ -21,10 +25,16 @@ Let's try fitting a a linear regression model to the cost data shown above. We g
 
 ![linear model](https://github.com/1Genevieve/Cost_modelling/blob/master/LM.JPG)
 
-The intercept is the average change in cost that is an increase of £406.534 after controlling for age, sex and level of health as measured by SF6D. For every unit increase in age, the cost goes up by £5.035. For every unit increase in health (SF6DM0), the cost decreases by £551.301.
+The second line of the output is the formula of the linear regression model: the dependent variable is cost and the regressors are age, sex and health. We are concerned with the average effect of acupuncture treatment on cost adjusting for age, sex and health (SF6D) in the population. Since our data comes from a sample of the population, we are fitting a normal distribution to our model in order to derive the average effect on the population and that average will fall in the middle of the bell-shaped curve (according to Central Limit Theorem!).
+
+The third line, residuals assess G-M condition 5. A residual is the difference between the observed value of the response variable (cost) and the value predicted by the model. For all positive and negative observed values, we want the difference to be symmetrical for all values of predictor X. As you would expect from our skewed data (compare min vs max, 1st vs 3rd quartile), the residuals do not appear symmetrical. 
+
+The fourth line is the beta coefficients. The intercept is the average change in cost that is an increase of £406.534 after adjusting for age, sex and level of health. For every unit increase in age, the cost goes up by £5.035. For every unit increase in health (SF6DM0), the cost decreases by £551.301.
+
+The Std. Error tells us how much the predicted estimates vary from the actual. Thus, the lower the Std. Errors, the better our model. For instance, for every unit increase in health, cost decreases by 551 but can vary by 496.
 
 ### Diagnostic plots
-Doing the diagnostics helps us to determine whether we need to correct the model and how. It involves plotting the residuals and calculating the Akaike Information Criterion (AIC). Let's first look at the plot of residuals.
+Diagnostics helps us make a decision whether we need to correct the model and how. I mean, we've seen the output and formed our judgement whether our model is good, but is it bad enough to consider an alternative model? Diagnostics involves plotting the residuals and calculating the Akaike Information Criterion (AIC). Let's first look at the plot of residuals.
 
 >plot( fitted(model.lr),resid(model.lr), ylab="residual", xlab="fitted value")
 >abline(h = 0, lty = 2, col = "blue")
@@ -87,3 +97,5 @@ Young, T. (2019) Statistical Modelling of Cost Data. (Lecture) The University of
 Barber, J. and Thompson, S. (2004) Multiple regression of cost data: use of genearlised linear models. Journal of Health Services Research & Policy, 9 (4), 197-204.
 
 Bommae Kim (2015) Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/)
+
+https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R
