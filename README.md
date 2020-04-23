@@ -27,11 +27,13 @@ Let's try fitting a a linear regression model to the cost data shown above. We g
 
 The second line of the output is the formula of the linear regression model: the dependent variable is cost and the regressors are age, sex and health. We are concerned with the average effect of acupuncture treatment on cost adjusting for age, sex and health (SF6D) in the population. Since our data comes from a sample of the population, we are fitting a normal distribution to our model in order to derive the average effect on the population and that average will fall in the middle of the bell-shaped curve (according to Central Limit Theorem!).
 
-The third line, residuals assess G-M condition 5. A residual is the difference between the observed value of the response variable (cost) and the value predicted by the model. For all positive and negative observed values, we want the difference to be symmetrical for all values of predictor X. As you would expect from our skewed data (compare min vs max, 1st vs 3rd quartile), the residuals do not appear symmetrical. 
+The third line, residuals assess G-M condition 5. A residual is the difference between the observed value of the response variable (cost) and the value predicted by the model. For all positive and negative observed values, we want the difference to be symmetrical for all values of predictor X. As you would expect from our skewed data (compare min vs max, 1st vs 3rd quartile), the residuals do not appear symmetrical. The predicted value is nearer some observed values than others.
 
-The fourth line is the beta coefficients. The intercept is the average change in cost that is an increase of £406.534 after adjusting for age, sex and level of health. For every unit increase in age, the cost goes up by £5.035. For every unit increase in health (SF6DM0), the cost decreases by £551.301.
+The fourth line is the coefficients -- intercept and slope (beta). The intercept is the average cost of treatment for all individuals in our sample, that is, £406.534 after adjusting for age, sex and level of health. The beta says that for every unit increase in age, the cost goes up by £5.035. For every unit increase in health (SF6DM0), the cost decreases by £551.301.
 
-The Std. Error tells us how much the predicted estimates vary from the actual. Thus, the lower the Std. Errors, the better our model. For instance, for every unit increase in health, cost decreases by 551 but can vary by 496.
+The Std. Error tells us how much the predicted estimates vary from the observed. The lower the Std. Errors relative to their coefficients, the better our model. For instance, for every unit increase in health, cost decreases by £551 but can vary by £496.
+
+The t-values measure the number of standard deviations the coefficients away are from 0. The larger the t-value, the more the regressor  variable (i.e. age, sex, health) indicates a potential influence on the outcome variable. As you can see, they are very small compared to the Std. Errors.
 
 ### Diagnostic plots
 Diagnostics helps us make a decision whether we need to correct the model and how. I mean, we've seen the output and formed our judgement whether our model is good, but is it bad enough to consider an alternative model? Diagnostics involves plotting the residuals and calculating the Akaike Information Criterion (AIC). Let's first look at the plot of residuals.
@@ -92,10 +94,10 @@ Let's now compare the predicted and observed costs.
 
 
 ### References:
-Young, T. (2019) Statistical Modelling of Cost Data. (Lecture) The University of Sheffield, 2019.
+1. Young, T. (2019) Statistical Modelling of Cost Data. (Lecture) The University of Sheffield, 2019.
 
-Barber, J. and Thompson, S. (2004) Multiple regression of cost data: use of genearlised linear models. Journal of Health Services Research & Policy, 9 (4), 197-204.
+2. Barber, J. and Thompson, S. (2004) Multiple regression of cost data: use of genearlised linear models. Journal of Health Services Research & Policy, 9 (4), 197-204.
 
-Bommae Kim (2015) Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/)
+3. Bommae Kim (2015) Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/)
 
-https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R
+4. Felipe Rego (2015). Quick Guide: Interpreting Simple Linear Model Output in R: (Available at: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R)
