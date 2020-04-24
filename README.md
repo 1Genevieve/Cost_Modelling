@@ -33,7 +33,9 @@ The fourth line is the coefficients -- intercept and slope (beta). The intercept
 
 The Std. Error tells us how much the predicted estimates vary from the observed. The lower the Std. Errors relative to their coefficients, the better our model. For instance, for every unit increase in health, cost decreases by £551 but can vary by £496.
 
-The t-values measure the number of standard deviations the coefficients away are from 0. The larger the t-value, the more the regressor  variable (i.e. age, sex, health) indicates a potential influence on the outcome variable. As you can see, they are very small compared to the Std. Errors.
+The t-values measure the number of standard deviations the coefficients away are from 0. The larger the t-value, the more the regressor  variable (i.e. age, sex, health) indicates a potential influence on the outcome variable. As you can see, they are also very small compared to the Std. Errors.
+
+Pr(>t) means the probability of observing the coefficient (intercept and slope) at or above t. For instance, at t=0.928, the probability of observing the relationship between age and cost by chance is 0.355. If we set alpha at 0.05, 0.355 is a high probability thus, such relationship is not significant and is due to chance. The same can be said for the other coefficients. Thus, the effect of acupuncture treatment on cost after adjusting for age, sex and health is not significant compared to a comparator treatment.
 
 ### Diagnostic plots
 Diagnostics helps us make a decision whether we need to correct the model and how. I mean, we've seen the output and formed our judgement whether our model is good, but is it bad enough to consider an alternative model? Diagnostics involves plotting the residuals and calculating the Akaike Information Criterion (AIC). Let's first look at the plot of residuals.
