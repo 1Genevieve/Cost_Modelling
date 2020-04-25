@@ -23,6 +23,7 @@ When G-M conditions are upheld, OLS is the best linear unbiased (and efficient) 
 ## Fitting a standard linear regression
 Let's try fitting a a linear regression model to the cost data shown above. We get a result like this in R:
 >model.lr <- lm(AccupunctureExample$Costs24~AccupunctureExample$age+AccupunctureExample$sex.new + AccupunctureExample$SF6DM0)
+
 >summary(model.lr)
 
 ![linear model](https://github.com/1Genevieve/Cost_modelling/blob/master/LM.JPG)
