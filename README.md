@@ -42,7 +42,7 @@ Pr(>t) means the probability of observing the coefficient (intercept and slope) 
 
 Let's go to the last 3 lines of the model output: residual standard error, multiple R-squared and F-statistic. The RSE tells how good the fit of our linear model is for all actual observed values of regressor variables and response variable. However, this fit is not perfect; there is a residual error. The RSE tells how much the response variable goes off. As mentioned earlier, the intercept is the average cost of treatment for all individuals in our sample, that is, £406.534 after adjusting for age, sex and level of health. The RSE is 675.6 meaning the cost could go off by 166%! The Degress of Freedom tells how many data points we used -- 146 out of 150. The 4 data points substracted are the intercept, age, sex and treatment. Logically, these 4 data points would not be accounted for in the estimation of RSE.  
 
-Multiple R-squared is the proportion of variance and measures how much of our response variable (cost) is explained by the predictor variable. The average cost in the population can vary due to many influences and in this case, 1.7% is explained by the predictor variables. This means a lot of variable influence cost that we have not accounted for.
+Multiple R-squared is the proportion of variance and measures how much of our response variable (cost) is explained by the predictor variable. The average cost in the population can vary due to many influences and in this case, 1.7% is explained by the predictor variables. This means a lot of variables that we have not accounted for influence cost.
 
 F-statistic is a test of significance; it tests whether the regressor variables significantly help explain variations in the response variable (acupuncture cost). It is valuable when there is more than one regressor variable (for instance, we might be adding a number of regressor variables to improve model fit, but those variable may be just noise). Usually, when the F-statistic is greater than 3, we can reject the null hypothesis that the influence of the regressor variables is not significant. Here, the F-statistic is 1.902 on 3 and 146 degrees of freedom. 
 
@@ -108,10 +108,10 @@ Let's now compare the predicted and observed costs.
 ### Bibliography
 1. Young, T. (2019) Statistical Modelling of Cost Data. (Lecture) The University of Sheffield, 2019.
 
-2. Ben Lambert (2013) Undergraduate Econometrics (youtube) 
+2. Ben Lambert (2013) Undergraduate Econometrics (youtube) (Available at: https://www.youtube.com/watch?v=M_5SLG7sUa0&list=PLwJRxp3blEvZyQBTTOMFRP_TDaSdly3gU).
 
 3. Barber, J. and Thompson, S. (2004) Multiple regression of cost data: use of genearlised linear models. Journal of Health Services Research & Policy, 9 (4), 197-204.
 
-4. Bommae Kim (2015) Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/)
+4. Bommae Kim (2015) Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/).
 
-5. Felipe Rego (2015). Quick Guide: Interpreting Simple Linear Model Output in R: (Available at: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R)
+5. Felipe Rego (2015). Quick Guide: Interpreting Simple Linear Model Output in R: (Available at: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R).
