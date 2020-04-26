@@ -44,6 +44,8 @@ Let's go to the last 3 lines of the model output: residual standard error, multi
 
 Multiple R-squared is the proportion of variance and measures how much of our response variable (cost) is explained by the predictor variable. The average cost in the population can vary due to many influences and in this case, 1.7% is explained by the predictor variables. This means a lot of variable influence cost that we have not accounted for.
 
+F-statistic is a test of significance; it tests whether the regressor variables significantly help explain variations in the response variable (acupuncture cost). It is valuable when there is more than one regressor variable (for instance, we might be adding a number of regressor variables to improve model fit, but those variable may be just noise). Usually, when the F-statistic is greater than 3, we can reject the null hypothesis that the influence of the regressor variables is not significant. Here, the F-statistic is 1.902 on 3 and 146 degrees of freedom. 
+
 
 ### Diagnostic plots
 Diagnostics helps us make a decision whether we need to correct the model and how. I mean, we've seen the output and formed our judgement whether our model is good, but is it bad enough to consider an alternative model? Diagnostics involves plotting the residuals and calculating the Akaike Information Criterion (AIC). Let's first look at the plot of residuals.
@@ -106,8 +108,10 @@ Let's now compare the predicted and observed costs.
 ### Bibliography
 1. Young, T. (2019) Statistical Modelling of Cost Data. (Lecture) The University of Sheffield, 2019.
 
-2. Barber, J. and Thompson, S. (2004) Multiple regression of cost data: use of genearlised linear models. Journal of Health Services Research & Policy, 9 (4), 197-204.
+2. Ben Lambert (2013) Undergraduate Econometrics (youtube) 
 
-3. Bommae Kim (2015) Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/)
+3. Barber, J. and Thompson, S. (2004) Multiple regression of cost data: use of genearlised linear models. Journal of Health Services Research & Policy, 9 (4), 197-204.
 
-4. Felipe Rego (2015). Quick Guide: Interpreting Simple Linear Model Output in R: (Available at: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R)
+4. Bommae Kim (2015) Understanding Diagnostic Plots for Linear Regression Analysis (Available at: https://data.library.virginia.edu/diagnostic-plots/)
+
+5. Felipe Rego (2015). Quick Guide: Interpreting Simple Linear Model Output in R: (Available at: https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R)
